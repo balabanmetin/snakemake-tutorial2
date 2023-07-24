@@ -8,7 +8,7 @@ Let's begin with genotyping chromosome `22` using Snakemake.
 
 The default workflow filename for Snakemake is `Snakefile`. 
 
-Note that `{sample}` cannot be referred directly inside shell. You can refer it using `{wildcards.sample}`
+Note that `{chromosome}` cannot be referred directly inside shell. You can refer it using `{wildcards.chromosome}`
 
 For a snakemake dry run:
 
