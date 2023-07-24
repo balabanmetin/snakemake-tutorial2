@@ -1,0 +1,31 @@
+
+SAMPLES =['sample1','sample2']
+CHR = range(1,23)
+REF='/n/fs/ragr-data/datasets/ref-genomes/GRCh37_10X/fasta/genome.fa'
+
+
+rule all:
+	input: expand("{sample}/calls.vcf.gz", sample=SAMPLES)
+
+rule concat_vcfs:
+	input: expand("{{sample}}/variants/{chromosome}.vcf.gz", chromosome=CHR)
+	output: "{sample}/calls.vcf.gz"
+	threads : 1
+	shell:
+		"""
+			bcftools concat {input} -Oz -o {output}
+		"""
+
+rule genotype_and_filter:
+	input:  "data/{sample}.bam"
+	output: "{sample}/variants/{chromosome}.vcf.gz"
+	threads: 1
+	shell:
+		"""
+			# generate a pileup of reads in each position in chromosme CHR and pipe the output
+			bcftools mpileup {input} -Ou -f {REF} --skip-indels -a INFO/AD,AD,DP -q 0 -Q 11 -d 300 -r {wildcards.chromosome} |
+			# call variants
+			bcftools call -mv -Ou |
+			# exclude low depth DP < 8
+			bcftools filter -e 'FMT/DP < 8' -Oz -o {wildcards.sample}/variants/{wildcards.chromosome}.vcf.gz	
+		"""

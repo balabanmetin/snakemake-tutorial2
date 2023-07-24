@@ -1,0 +1,9 @@
+restart-times: 0
+max-jobs-per-second: 5
+max-status-checks-per-second: 5
+latency-wait: 120
+keep-going: true
+cluster: 'sbatch --ntasks=1 --cpus-per-task={resources.cpus} --partition=raphael --mem={resources.mem_mb} --time={resources.time_min} --nodes=1 -e /dev/null -o /dev/null'
+default-resources: [cpus=1, mem_mb=7000, time_min=1400, tmpdir='/dev/shm']
+jobs: 1000
+cluster-status: "slurm-status.py"
