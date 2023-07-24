@@ -26,6 +26,8 @@ Snakemake offers many more useful features. A short list is below
 * Using `-f`, `-fF`, and `-R` you can rerun some parts of the workflow.
 
 * Snakemake keeps track of the timestamps of the input/output files in the workflow. If an input file is edited upstream, it generates a plan to rerun jobs that depend on the edited file downstream and only reruns the necessary downstream parts.
+
+* `concat_vcfs` rules expected exactly 22 input VCF files that correspons to each autosomal chromosome in human. In some applications, the number of input files may depend on the input. For example, a rule may take an undetermined number of gene alignments as an input. Snakemake can handle this scenario as well, you can ask me to show you some examples from my code offline.
  
 
 
