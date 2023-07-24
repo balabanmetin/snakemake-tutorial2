@@ -2,7 +2,7 @@ In this tutorial, we will implement a simple workflow described in `workflow.sh`
 
 The workflow takes a bamfile as an input and calls variants in each chromosome separately and filters low depth calls. The calls for each chromosome is written to a different file. In the final step, the calls for each chromosome is concatenated into a single VCF file.
 
-Take a look at `data` directory where we have a single BAM file.
+Take a look at `data` directory where we have two BAM files.
 
 Let's begin with genotyping chromosome `22` using Snakemake.
 
