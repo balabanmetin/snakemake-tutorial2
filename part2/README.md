@@ -3,7 +3,7 @@ Using the `expand` function, it is very easy to run the workflow on multiple sam
 
 `snakemake -c22 -np all`
 
-So far we were running this workflow locally since we were specifying CPU resources using `-c 22` option. It is trivially simple to run the jobs in a distributed fashion on the compute nodes. I created a cluster profile for cycles HPC. Fortunately, you can reuse the same profile I created on cycles with no changes! And with minimal to no changes (SLURM option -A and -P), the same profile can be used in other clusters with SLURM job scheduler too.
+So far we were running this workflow locally since we were specifying CPU resources using `-c 22` option. It is trivially simple to run the jobs in a distributed fashion on the compute nodes. I created a cluster profile for cycles HPC. The contents of this profile may seem complex. Fortunately, you can reuse the same profile I created on cycles with no changes! And with minimal (SLURM option -A and -P) to no changes, the same profile can be used in other clusters with SLURM job scheduler too.
 
 Inspect `cycles-profile/config.yaml`
 
