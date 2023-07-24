@@ -18,5 +18,5 @@ rule genotype_and_filter:
 			# call variants
 			bcftools call -mv -Ou |
 			# exclude low depth DP < 8
-			bcftools filter -e 'FMT/DP < 8' -Oz -o {wildcards.sample}/variants/{wildcards.chromosome}.vcf.gz	
+			bcftools filter -e 'FMT/DP < 8' -Oz -o {output}	
 		"""
