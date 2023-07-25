@@ -1,4 +1,4 @@
-# Snakemake and Singularity Tutorial
+# Snakemake and HPC tutorial
 
 Snakemake is a python based workflow management tool. It's very useful when you have a project where you chain a bunch of tools to get a result (e.g. benchmarking your software) and some parts must be distributed in HPC. It also prevents unneccessary re-running.
 
